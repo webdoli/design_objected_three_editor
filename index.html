@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.171.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.171.0/examples/jsm/"
+            }
+        }
+    </script>
+    <title>THREE Editor Reference</title>
+</head>
+<body>
+    <button id="addCube">Add Cube</button>
+    <button id="undoButton">Undo</button>
+    <button id="redoButton">Redo</button>
+    <button id="saveButton">Save</button>
+    <input id="loadButton" type="file" />
+    <button id="propertyPanelToggle">Toggle Property Panel</button>
+    <div id="propertyPanel" style="display:none;">
+        <label for="positionX">Position X:</label>
+        <input id="positionX" type="number" step="0.1"><br>
+        <label for="positionY">Position Y:</label>
+        <input id="positionY" type="number" step="0.1"><br>
+        <label for="positionZ">Position Z:</label>
+        <input id="positionZ" type="number" step="0.1"><br>
+    </div>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>
