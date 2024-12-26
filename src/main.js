@@ -35,10 +35,6 @@ const init = () => {
 
     sceneManager.scene.add( new THREE.GridHelper( 5, 10, 0x888888, 0x444444 ) );
 
-    // const texture = new THREE.TextureLoader().load( '../assets/textures/crate.jpg', render );
-    // texture.colorSpace = THREE.SRGBColorSpace;
-    // texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
-
     orbit_control = new OrbitControls( current_camera, renderer.domElement );
     orbit_control.update();
     orbit_control.addEventListener( 'change', render );
@@ -49,32 +45,31 @@ const init = () => {
         orbit_control.enabled = ! event.value;
     });
 
-    
+    // const texture = new THREE.TextureLoader().load( '../assets/textures/crate.jpg', render );
+    // texture.colorSpace = THREE.SRGBColorSpace;
+    // texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
 
-    const texture = new THREE.TextureLoader().load( '../assets/textures/crate.jpg', render );
-    texture.colorSpace = THREE.SRGBColorSpace;
-    texture.anisotropy = renderer.capabilities.getMaxAnisotropy();
+    // const geometry = new THREE.BoxGeometry();
+    // const material = new THREE.MeshLambertMaterial( { map: texture } );
 
-    const geometry = new THREE.BoxGeometry();
-    const material = new THREE.MeshLambertMaterial( { map: texture } );
+    // const mesh = new THREE.Mesh( geometry, material );
 
-    const mesh = new THREE.Mesh( geometry, material );
+    /*_________________*/
+    /*____ Signals ____*/
+    /*_________________*/
+    sceneManager.objectAdded.add(( obj ) => {
+        sceneManager.scene.add( obj );
+        current_control.attach( obj );
+    });
 
-    // const cube = new THREE.Mesh(
-    //     new THREE.BoxGeometry(1, 1, 1),
-    //     new THREE.MeshStandardMaterial({ color: 0x00ff00 })
-    // );
-    sceneManager.scene.add( mesh );
-    current_control.attach( mesh );
+    sceneManager.textureLoading.add(( texture ) => {
+        
+    })
 
     const gizmo = current_control.getHelper();
     sceneManager.scene.add( gizmo );
 
-    // sceneManager.objectAdded.add((obj) => {
-    //     console.log('obj: ', obj );
-    //     current_control.attach( obj );
-    // })
-
+    /* @@
     window.addEventListener( 'keydown', function ( event ) {
 
         switch ( event.key ) {
@@ -173,7 +168,8 @@ const init = () => {
 
         }
 
-    } );
+    });
+    */
 
 
 }
@@ -195,7 +191,7 @@ function onWindowResize() {
 
 }
 
-const render = () => {
+function render() {
     renderer.render( sceneManager.scene, current_camera );
 }
 

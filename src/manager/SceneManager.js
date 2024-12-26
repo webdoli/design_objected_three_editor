@@ -7,6 +7,7 @@ export class SceneManager{
         this.objectAdded = new Signals();
         this.objectRemoved = new Signals();
         this.objectSelected = new Signals();
+        this.textureLoading = new Signals();
 
         this.initListeners(); // Signals 리스너 등록
     }
