@@ -1,13 +1,14 @@
 import { SceneManager } from "./manager/SceneManager.js";
 import { CommandManager } from "./manager/CommandManager.js";
+import { Viewport } from "./ui/Viewport.js";
 import { UIManager } from "./ui/UIManager.js";
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 import { TransformControls } from 'three/addons/controls/TransformControls.js';
 
-const sceneManager = new SceneManager( THREE );
+const sceneManager = new SceneManager();
 const commandManager = new CommandManager();
-const uiManager = new UIManager( sceneManager, commandManager, THREE );
+const uiManager = new UIManager( sceneManager, commandManager );
 
 let current_camera, renderer, camera_perspective, current_control, orbit_control, camera_ortho
 

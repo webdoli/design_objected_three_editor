@@ -1,9 +1,15 @@
 
 import { Signals } from "../utils/Signals.js";
+import * as THREE from 'three';
 
 export class SceneManager{
-    constructor( THREE ) {
+    constructor() {
+        const aspect = window.innerWidth / window.innerHeight;
         this.scene = new THREE.Scene();
+        this.currentCam = new THREE.PerspectiveCamera( 50, aspect, 0.1, 100 );
+        this.signals_ = Signals;
+
+        // Signals
         this.objectAdded = new Signals();
         this.objectRemoved = new Signals();
         this.objectSelected = new Signals();

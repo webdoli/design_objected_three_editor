@@ -92,107 +92,107 @@
 				const gizmo = control.getHelper();
 				scene.add( gizmo );
 
-				window.addEventListener( 'resize', onWindowResize );
+				// window.addEventListener( 'resize', onWindowResize );
 
-				window.addEventListener( 'keydown', function ( event ) {
+				// window.addEventListener( 'keydown', function ( event ) {
 
-					switch ( event.key ) {
+				// 	switch ( event.key ) {
 
-						case 'q':
-							control.setSpace( control.space === 'local' ? 'world' : 'local' );
-							break;
+				// 		case 'q':
+				// 			control.setSpace( control.space === 'local' ? 'world' : 'local' );
+				// 			break;
 
-						case 'Shift':
-							control.setTranslationSnap( 1 );
-							control.setRotationSnap( THREE.MathUtils.degToRad( 15 ) );
-							control.setScaleSnap( 0.25 );
-							break;
+				// 		case 'Shift':
+				// 			control.setTranslationSnap( 1 );
+				// 			control.setRotationSnap( THREE.MathUtils.degToRad( 15 ) );
+				// 			control.setScaleSnap( 0.25 );
+				// 			break;
 
-						case 'w':
-							control.setMode( 'translate' );
-							break;
+				// 		case 'w':
+				// 			control.setMode( 'translate' );
+				// 			break;
 
-						case 'e':
-							control.setMode( 'rotate' );
-							break;
+				// 		case 'e':
+				// 			control.setMode( 'rotate' );
+				// 			break;
 
-						case 'r':
-							control.setMode( 'scale' );
-							break;
+				// 		case 'r':
+				// 			control.setMode( 'scale' );
+				// 			break;
 
-						case 'c':
-							const position = currentCamera.position.clone();
+				// 		case 'c':
+				// 			const position = currentCamera.position.clone();
 
-							currentCamera = currentCamera.isPerspectiveCamera ? cameraOrtho : cameraPersp;
-							currentCamera.position.copy( position );
+				// 			currentCamera = currentCamera.isPerspectiveCamera ? cameraOrtho : cameraPersp;
+				// 			currentCamera.position.copy( position );
 
-							orbit.object = currentCamera;
-							control.camera = currentCamera;
+				// 			orbit.object = currentCamera;
+				// 			control.camera = currentCamera;
 
-							currentCamera.lookAt( orbit.target.x, orbit.target.y, orbit.target.z );
-							onWindowResize();
-							break;
+				// 			currentCamera.lookAt( orbit.target.x, orbit.target.y, orbit.target.z );
+				// 			onWindowResize();
+				// 			break;
 
-						case 'v':
-							const randomFoV = Math.random() + 0.1;
-							const randomZoom = Math.random() + 0.1;
+				// 		case 'v':
+				// 			const randomFoV = Math.random() + 0.1;
+				// 			const randomZoom = Math.random() + 0.1;
 
-							cameraPersp.fov = randomFoV * 160;
-							cameraOrtho.bottom = - randomFoV * 500;
-							cameraOrtho.top = randomFoV * 500;
+				// 			cameraPersp.fov = randomFoV * 160;
+				// 			cameraOrtho.bottom = - randomFoV * 500;
+				// 			cameraOrtho.top = randomFoV * 500;
 
-							cameraPersp.zoom = randomZoom * 5;
-							cameraOrtho.zoom = randomZoom * 5;
-							onWindowResize();
-							break;
+				// 			cameraPersp.zoom = randomZoom * 5;
+				// 			cameraOrtho.zoom = randomZoom * 5;
+				// 			onWindowResize();
+				// 			break;
 
-						case '+':
-						case '=':
-							control.setSize( control.size + 0.1 );
-							break;
+				// 		case '+':
+				// 		case '=':
+				// 			control.setSize( control.size + 0.1 );
+				// 			break;
 
-						case '-':
-						case '_':
-							control.setSize( Math.max( control.size - 0.1, 0.1 ) );
-							break;
+				// 		case '-':
+				// 		case '_':
+				// 			control.setSize( Math.max( control.size - 0.1, 0.1 ) );
+				// 			break;
 
-						case 'x':
-							control.showX = ! control.showX;
-							break;
+				// 		case 'x':
+				// 			control.showX = ! control.showX;
+				// 			break;
 
-						case 'y':
-							control.showY = ! control.showY;
-							break;
+				// 		case 'y':
+				// 			control.showY = ! control.showY;
+				// 			break;
 
-						case 'z':
-							control.showZ = ! control.showZ;
-							break;
+				// 		case 'z':
+				// 			control.showZ = ! control.showZ;
+				// 			break;
 
-						case ' ':
-							control.enabled = ! control.enabled;
-							break;
+				// 		case ' ':
+				// 			control.enabled = ! control.enabled;
+				// 			break;
 
-						case 'Escape':
-							control.reset();
-							break;
+				// 		case 'Escape':
+				// 			control.reset();
+				// 			break;
 
-					}
+				// 	}
 
-				} );
+				// } );
 
-				window.addEventListener( 'keyup', function ( event ) {
+				// window.addEventListener( 'keyup', function ( event ) {
 
-					switch ( event.key ) {
+				// 	switch ( event.key ) {
 
-						case 'Shift':
-							control.setTranslationSnap( null );
-							control.setRotationSnap( null );
-							control.setScaleSnap( null );
-							break;
+				// 		case 'Shift':
+				// 			control.setTranslationSnap( null );
+				// 			control.setRotationSnap( null );
+				// 			control.setScaleSnap( null );
+				// 			break;
 
-					}
+				// 	}
 
-				} );
+				// } );
 
 			}
 
